@@ -27,10 +27,22 @@ function card(title,author,year,isComplete,genre,sinopsis,imgLink){
 
     return card
 }
+function generateId() {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = now.getMonth() + 1;
+    const date = now.getDate();
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+    const seconds = now.getSeconds();
+    const milliseconds = now.getMilliseconds();
+    const id = `${year}${month}${date}${hours}${minutes}${seconds}${milliseconds}`;
+    return id;
+  }
 function generateDefault(){
-    const book = [
+    const books = [
         {
-            id: +new Date(),
+            id: null,
             title: 'The Hobbit',
             author: 'J.R.R Tolkien',
             year: 1937,
@@ -40,7 +52,7 @@ function generateDefault(){
             imgLink:'https://upload.wikimedia.org/wikipedia/en/thumb/3/30/Hobbit_cover.JPG/220px-Hobbit_cover.JPG'
         },
         {
-            id: +new Date(),
+            id: null,
             title: 'The Lord of The Rings',
             author: 'J.R.R Tolkien',
             year: 1954,
@@ -50,7 +62,7 @@ function generateDefault(){
             imgLink:'https://upload.wikimedia.org/wikipedia/en/e/e9/First_Single_Volume_Edition_of_The_Lord_of_the_Rings.gif'
         },
         {
-            id: +new Date(),
+            id: null,
             title: 'The Chronicles of Narnia',
             author: 'C.S Lewis',
             year: 1950,
@@ -60,7 +72,7 @@ function generateDefault(){
             imgLink:'https://upload.wikimedia.org/wikipedia/en/thumb/c/cb/The_Chronicles_of_Narnia_box_set_cover.jpg/220px-The_Chronicles_of_Narnia_box_set_cover.jpg'
         },
         {
-            id: +new Date(),
+            id: null,
             title: 'The Hunger Games',
             author: 'Suzanne Collins',
             year: 2008,
@@ -70,7 +82,7 @@ function generateDefault(){
             imgLink:'https://upload.wikimedia.org/wikipedia/en/thumb/3/39/The_Hunger_Games_cover.jpg/220px-The_Hunger_Games_cover.jpg'
         },
         {
-            id: +new Date(),
+            id: null,
             title: 'Harry Potter',
             author: 'J.K Rowling',
             year: 1997,
@@ -80,7 +92,15 @@ function generateDefault(){
             imgLink:'https://m.media-amazon.com/images/I/515E2f9WO+L._SY445_SX342_.jpg'
         }
     ]
-    storage.setItem('books',JSON.stringify(book))
+    let delay = 0;
+    for (const book of books) {
+      setTimeout(function() {
+        book.id = generateId();
+        storage.setItem('books', JSON.stringify(books));
+      }, delay);
+      delay += 100; // Delay selama 1 detik
+    }
+    storage.setItem('books',JSON.stringify(books))
 }
 function renderBooks(books){
     const container = document.getElementsByClassName('main-body')[0]
@@ -89,6 +109,32 @@ function renderBooks(books){
         const cardElement = card(book.title,book.author,book.year,book.isComplete,book.genre,book.sinopsis,book.imgLink)
         container.appendChild(cardElement)
     } 
+    document.querySelectorAll('.button-delete').forEach(deleteButton => {
+        deleteButton.addEventListener('click', function() {
+            const card = this.closest('.card');
+            const cardTitleElement = card.querySelector('.card-title');
+            const cardTitle = cardTitleElement.textContent;
+            const title = cardTitle.split(' (')[0];
+            const books = JSON.parse(storage.getItem('books'));
+            const filteredBooks = books.filter(book => book.title !== title);
+            storage.setItem('books', JSON.stringify(filteredBooks));
+            card.remove();
+            alert('Book deleted!');
+        });
+    });
+    
+    document.querySelectorAll('.button-edit').forEach(editButton => {
+        editButton.addEventListener('click', function() {
+            const card = this.closest('.card');
+            const cardTitleElement = card.querySelector('.card-title');
+            const cardTitle = cardTitleElement.textContent;
+            const title = cardTitle.split(' (')[0];
+            const books = JSON.parse(storage.getItem('books'));
+            const book = books.find(book => book.title === title);
+            storage.setItem('book-edit', JSON.stringify(book));
+            window.location.href = 'AddBook.html';
+        });
+    });
 }
 
 let currentSearchResult = [];
@@ -145,22 +191,11 @@ document.getElementsByClassName('search')[0].addEventListener('input', function 
     searchBooks();
 });
 
-
-document.querySelectorAll('.button-delete').forEach(deleteButton => {
-    deleteButton.addEventListener('click', function() {
-        const card = this.closest('.card');
-        const cardTitleElement = card.querySelector('.card-title');
-        const cardTitle = cardTitleElement.textContent;
-        const title = cardTitle.split(' (')[0];
-        const books = JSON.parse(storage.getItem('books'));
-        const filteredBooks = books.filter(book => book.title !== title);
-        storage.setItem('books', JSON.stringify(filteredBooks));
-        card.remove();
-    });
-});
-
 document.getElementsByClassName('button-add')[0].addEventListener('click', function() {
     window.location.href = 'AddBook.html';
 })
+
+
+
 
 
