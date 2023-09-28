@@ -155,7 +155,7 @@ select:focus {
 }
 .card{
     display: flex;
-    justify-content: space-between;
+    justify-content: left;
     gap: 2rem;
     width: 42rem;
     background-color: var(--bg-first);
@@ -209,7 +209,7 @@ select:focus {
     overflow: hidden;
     display: -webkit-box;
     height: 3.75rem;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
 }
 .card-button{
