@@ -209,7 +209,7 @@ select:focus {
     overflow: hidden;
     display: -webkit-box;
     height: 3.75rem;
-    -webkit-line-clamp: 1;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
 }
 .card-button{
