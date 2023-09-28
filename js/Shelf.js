@@ -1,6 +1,6 @@
 const storage = window.localStorage
-if (storage.getItem('book') === null) generateDefault()
-renderBooks(JSON.parse(storage.getItem('book')))
+if (storage.getItem('books') === null) generateDefault()
+renderBooks(JSON.parse(storage.getItem('books')))
 
 
 
@@ -30,7 +30,7 @@ function card(title,author,year,isComplete,genre,sinopsis,imgLink){
 function generateDefault(){
     const book = [
         {
-            id: 1,
+            id: +new Date(),
             title: 'The Hobbit',
             author: 'J.R.R Tolkien',
             year: 1937,
@@ -40,7 +40,7 @@ function generateDefault(){
             imgLink:'https://upload.wikimedia.org/wikipedia/en/thumb/3/30/Hobbit_cover.JPG/220px-Hobbit_cover.JPG'
         },
         {
-            id: 2,
+            id: +new Date(),
             title: 'The Lord of The Rings',
             author: 'J.R.R Tolkien',
             year: 1954,
@@ -50,7 +50,7 @@ function generateDefault(){
             imgLink:'https://upload.wikimedia.org/wikipedia/en/e/e9/First_Single_Volume_Edition_of_The_Lord_of_the_Rings.gif'
         },
         {
-            id: 3,
+            id: +new Date(),
             title: 'The Chronicles of Narnia',
             author: 'C.S Lewis',
             year: 1950,
@@ -60,7 +60,7 @@ function generateDefault(){
             imgLink:'https://upload.wikimedia.org/wikipedia/en/thumb/c/cb/The_Chronicles_of_Narnia_box_set_cover.jpg/220px-The_Chronicles_of_Narnia_box_set_cover.jpg'
         },
         {
-            id: 4,
+            id: +new Date(),
             title: 'The Hunger Games',
             author: 'Suzanne Collins',
             year: 2008,
@@ -70,7 +70,7 @@ function generateDefault(){
             imgLink:'https://upload.wikimedia.org/wikipedia/en/thumb/3/39/The_Hunger_Games_cover.jpg/220px-The_Hunger_Games_cover.jpg'
         },
         {
-            id: 5,
+            id: +new Date(),
             title: 'Harry Potter',
             author: 'J.K Rowling',
             year: 1997,
@@ -80,7 +80,7 @@ function generateDefault(){
             imgLink:'https://m.media-amazon.com/images/I/515E2f9WO+L._SY445_SX342_.jpg'
         }
     ]
-    storage.setItem('book',JSON.stringify(book))
+    storage.setItem('books',JSON.stringify(book))
 }
 function renderBooks(books){
     const container = document.getElementsByClassName('main-body')[0]
@@ -97,7 +97,7 @@ function filterAndSortBooks() {
     const filterValue = document.getElementById('filter').value;
     const sortValue = document.getElementById('sort').value;
 
-    let books = (currentSearchResult.length > 0) ? currentSearchResult : JSON.parse(storage.getItem('book'))
+    let books = (currentSearchResult.length > 0) ? currentSearchResult : JSON.parse(storage.getItem('books'))
 
     if (filterValue === 'done') {
         filteredBooks = books.filter(book => book.isComplete === true);
@@ -126,7 +126,7 @@ function filterAndSortBooks() {
 
 function searchBooks() {
     const searchValue = document.getElementsByClassName('search')[0].value.toLowerCase();
-    const books = JSON.parse(storage.getItem('book'));
+    const books = JSON.parse(storage.getItem('books'));
     currentSearchResult = books.filter(book => {
         return book.title.toLowerCase().includes(searchValue) || book.author.toLowerCase().includes(searchValue);
     });
@@ -152,15 +152,15 @@ document.querySelectorAll('.button-delete').forEach(deleteButton => {
         const cardTitleElement = card.querySelector('.card-title');
         const cardTitle = cardTitleElement.textContent;
         const title = cardTitle.split(' (')[0];
-        const books = JSON.parse(storage.getItem('book'));
+        const books = JSON.parse(storage.getItem('books'));
         const filteredBooks = books.filter(book => book.title !== title);
-        storage.setItem('book', JSON.stringify(filteredBooks));
+        storage.setItem('books', JSON.stringify(filteredBooks));
         card.remove();
     });
 });
 
 document.getElementsByClassName('button-add')[0].addEventListener('click', function() {
-    
+    window.location.href = 'AddBook.html';
 })
 
 

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <title>Bookshelf+</title>
+    <link rel="stylesheet" href="../style/AddBook.css">
+</head>
+<body>
+    <header>
+        <img src="../public/logo.png" alt="">
+        <div class="navbar-container">
+            <nav>
+                <li>
+                    <a href="">Shelves</a>
+                </li>
+                <li>
+                    <a href="">About</a>
+                </li>
+            </nav>
+            <nav>
+                <li class="search-bar">
+                    <input class="search" type="text" placeholder="Find your book here">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </li>
+                <li>
+                    <button class="button-profile">
+                        <i class="fas fa-user"></i>
+                        <span>Profile</span>
+                    </button>
+                </li>
+            </nav>
+
+        </div>
+    </header>
+    <main>
+        <div class="main-header">
+            <div class="title">
+                <h1>My Bookshelf</h1>
+                <p>Create your own literary haven online</p>
+            </div>
+        </div>
+        <div class="main-body">
+            <aside>
+                <img src="../public/DefaultImage.jpg" alt="">
+            </aside>
+            <div class="book-form">
+                <div class="input-container">
+                    <label for="book-name">Book Name</label>
+                    <input type="text" name="book-name" >
+                </div>
+                <div class="input-container">
+                    <label for="author">Author</label>
+                    <input type="text" name="author" >
+                </div>
+                <div class="input-container">
+                    <label for="year">Year</label>
+                    <input type="text" name="year" >
+                </div>
+                <div class="input-container">
+                    <label for="genre">Genre</label>
+                    <input type="text" name="genre">
+                </div>
+                <div class="input-container">
+                    <label for="sinopsis">Sinopsis</label>
+                    <textarea name="sinopsis" id="" cols="30" rows="10"></textarea>
+                </div>
+                <div class="complete-container">
+                    <label for="book-complete">Complete</label>
+                    <input type="checkbox" name="book-complete" >
+                </div>
+                <div class="input-container">
+                    <label for="book-img">Image Link</label>
+                    <input type="text" name="book-img" >
+                </div>
+                <div class="button-container">
+                    <button class="button-add">Add Book</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2023 Bookshelf+</p>
+    </footer>
+    <script src="../js/AddBook.js"></script>
+</body>
+</html>
