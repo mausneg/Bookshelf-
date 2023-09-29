@@ -1,8 +1,7 @@
 const storage = window.localStorage
 if (storage.getItem('books') === null) generateDefault()
 renderBooks(JSON.parse(storage.getItem('books')))
-
-
+localStorage.removeItem('book-edit')
 
 function card(title,author,year,isComplete,genre,sinopsis,imgLink){
     const card = document.createElement('div')
@@ -45,7 +44,7 @@ function generateDefault(){
             id: null,
             title: 'The Hobbit',
             author: 'J.R.R Tolkien',
-            year: 1937,
+            year: parseInt(1937),
             isComplete: true,
             genre: 'Fantasy', 
             sinopsis: 'Bilbo Baggins, a hobbit who enjoys a comfortable, unambitious life, is swept away by Gandalf the Wizard and a company of dwarves. He embarks on a journey that takes him to the Lonely Mountain where he must face Smaug, a dragon.',
@@ -55,7 +54,7 @@ function generateDefault(){
             id: null,
             title: 'The Lord of The Rings',
             author: 'J.R.R Tolkien',
-            year: 1954,
+            year: parseInt(1954),
             isComplete: false,
             genre: 'Fantasy',
             sinopsis: 'The Lord of the Rings is an epic high fantasy novel written by English author and scholar J. R. R. Tolkien. The story began as a sequel to Tolkien s 1937 fantasy novel The Hobbit, but eventually developed into a much larger work.',
@@ -65,7 +64,7 @@ function generateDefault(){
             id: null,
             title: 'The Chronicles of Narnia',
             author: 'C.S Lewis',
-            year: 1950,
+            year: parseInt(1950),
             isComplete: false,
             genre: 'Fantasy',
             sinopsis: 'The Chronicles of Narnia is a series of fantasy novels by British author C. S. Lewis. Written by Lewis, illustrated by Pauline Baynes, and originally published in London between 1950 and 1956, The Chronicles of Narnia has been adapted for radio, television, the stage, and film.',
@@ -75,7 +74,7 @@ function generateDefault(){
             id: null,
             title: 'The Hunger Games',
             author: 'Suzanne Collins',
-            year: 2008,
+            year: parseInt(2008),
             isComplete: false,
             genre: 'Science Fiction',
             sinopsis: 'The Hunger Games is a 2008 dystopian novel by the American writer Suzanne Collins. It is written in the voice of 16-year-old Katniss Everdeen, who lives in the future, post-apocalyptic nation of Panem in North America.',
@@ -85,7 +84,7 @@ function generateDefault(){
             id: null,
             title: 'Harry Potter',
             author: 'J.K Rowling',
-            year: 1997,
+            year: parseInt(1997),
             isComplete: true,
             genre: 'Fantasy',
             sinopsis: 'Harry Potter is a series of seven fantasy novels written by British author J. K. Rowling. The novels chronicle the lives of a young wizard, Harry Potter, and his friends Hermione Granger and Ron Weasley, all of whom are students at Hogwarts School of Witchcraft and Wizardry.',

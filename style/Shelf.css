@@ -236,3 +236,98 @@ footer{
     padding: 2rem;
     box-sizing: border-box;
 }
+
+@media screen and (max-width: 768px) {
+    header {
+        padding: 0.5rem;
+    }
+    header > img {
+        width: 7rem;
+    }
+    .navbar-container {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+    nav {
+        gap: 0.5rem;
+        font-size: 0.5rem;
+    }
+    nav > li > a {
+        font-size: 0.75rem;
+    }
+    .search-bar {
+        padding: 0.25rem 0.5rem;
+    }
+    .search-bar > input {
+        font-size: 0.5rem;
+    }
+    .button-profile {
+        gap: 0.25rem;
+        font-size: 0.5rem;
+        padding: 0.25rem 0.5rem;
+    }
+    main {
+        padding: 0.5rem;
+    }
+    .title > h1 {
+        font-size: 1rem;
+    }
+    .title > p {
+        font-size: 0.5rem;
+    }
+    .organize {
+        gap: 0.5rem;
+    }
+    .sort, .filter {
+        margin-right: 5px;
+    }
+    label {
+        font-size: 0.5rem;
+        margin-right: 0.25rem;
+    }
+    select {
+        font-size: 0.5rem;
+        padding: 0.25rem 0.5rem;
+    }
+    .button-add {
+        gap: 0.25rem;
+        font-size: 0.5rem;
+        padding: 0.25rem 0.5rem;
+    }
+    .main-body {
+        gap: 0.5rem;
+    }
+    .card {
+        width: 100%;
+        padding: 0.5rem;
+    }
+    .card-title {
+        font-size: 0.75rem;
+    }
+    .card-author {
+        font-size: 0.5rem;
+    }
+    .card-genre {
+        font-size: 0.5rem;
+    }
+    .card-img {
+        width: 8rem;
+        height: auto;
+    }
+    .card-status {
+        margin-top: 0.25rem;
+        font-size: 0.5rem;
+    }
+    .card-sinopsis {
+        margin-top: 0.25rem;
+        font-size: 0.5rem;
+    }
+    .card-button > button {
+        margin-top: 0.25rem;
+        font-size: 0.5rem;
+        padding: 0.25rem 0.5rem;
+    }
+    footer {
+        padding: 0.5rem;
+    }
+}

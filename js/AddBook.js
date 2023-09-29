@@ -1,6 +1,8 @@
 const storage = window.localStorage;
 const form = document.querySelector('.book-form');
 
+
+
 if(localStorage.getItem('book-edit')) {
     const book = JSON.parse(localStorage.getItem('book-edit'));
     form.querySelector('input[name="book-name"]').value = book.title;
@@ -52,7 +54,7 @@ document.querySelector('.button-add').addEventListener('click', function(e) {
         id: generateId(),
         title: title,
         author: author,
-        year: year,
+        year: parseInt(year),
         isComplete: isComplete,
         genre: genre,
         sinopsis: sinopsis,
