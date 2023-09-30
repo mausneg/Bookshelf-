@@ -333,3 +333,23 @@ footer{
         padding: 0.5rem;
     }
 }
+
+@media screen and (max-width: 1065px) {
+    .main-body{
+        flex-direction: column;
+        justify-content: center;
+        gap: 3rem;
+    }
+    aside{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    aside>img{
+        width:80%;
+        height: auto;
+    }
+    .book-form{
+        width: 100%;
+    }
+}
